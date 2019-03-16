@@ -1,0 +1,39 @@
+{
+  "name": "npm-slack-bot",
+  "version": "0.0.2",
+  "description": "Slack bot for fetching and viewing bundle sizes for NPM packages",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "format": "prettier --write \"**/*.{css,md,js,html}\""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "botkit": "^0.7.0",
+    "botkit-storage-mongo": "^1.0.6",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.3.3",
+    "express": "^4.14.0",
+    "express-hbs": "^1.0.4",
+    "node-env-file": "^0.1.8",
+    "node-nlp": "^2.5.1",
+    "querystring": "^0.2.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexknipfer/npm-bot"
+  },
+  "keywords": [
+    "bots",
+    "chatbots",
+    "slack"
+  ],
+  "author": "Alex Knipfer",
+  "license": "MIT"
+}
