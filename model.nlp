@@ -33,39 +33,9 @@
       "Hashtag",
       "URL"
     ],
-    "namedEntities": {
-      "packageName": {
-        "type": "trim",
-        "name": "packageName",
-        "localeFallback": {
-          "*": "en"
-        },
-        "locales": {
-          "en": {
-            "conditions": [
-              {
-                "type": "after",
-                "options": {},
-                "words": [
-                  "Search for "
-                ]
-              }
-            ]
-          }
-        }
-      }
-    }
+    "namedEntities": {}
   },
-  "slotManager": {
-    "search.package": {
-      "packageName": {
-        "intent": "search.package",
-        "entity": "packageName",
-        "mandatory": false,
-        "locales": {}
-      }
-    }
-  },
+  "slotManager": {},
   "classifiers": [
     {
       "language": "en",
@@ -176,15 +146,15 @@
               },
               {
                 "0": {
-                  "bias": 25.974943161010742,
+                  "bias": 26.00264549255371,
                   "weights": {
-                    "search": 14.208759307861328,
-                    "for": 28.79135513305664,
-                    "a": 1.6919047832489014,
-                    "packag": 1.5937896966934204,
-                    "call": 1.6227699518203735,
-                    "packagenam": 28.82600975036621,
-                    "look": 14.76571273803711
+                    "search": 14.109566688537598,
+                    "for": 28.751937866210938,
+                    "a": 1.8149189949035645,
+                    "packag": 1.5163443088531494,
+                    "call": 1.548815131187439,
+                    "packagenam": 28.966415405273438,
+                    "look": 14.601981163024902
                   }
                 }
               }
@@ -210,13 +180,5 @@
       }
     }
   ],
-  "responses": {
-    "en": {
-      "search.package": [
-        {
-          "response": "Your package name is {{packageName}}"
-        }
-      ]
-    }
-  }
+  "responses": {}
 }

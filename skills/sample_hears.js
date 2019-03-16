@@ -21,7 +21,7 @@ module.exports = function(controller, nlpManager) {
     function(bot, message) {
       bot.createConversation(message, async function(err, convo) {
         if (!err) {
-          // console.log('MESSAGE: ', message)
+          console.log('MESSAGE: ', message)
           // const result = await nlpManager.process()
           // convo.setVar("uptime", formatUptime(process.uptime()));
           // convo.setVar("convos", stats.convos);

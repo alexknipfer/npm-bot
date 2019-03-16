@@ -1,11 +1,13 @@
-const nlpManager = require('../config/nlpManager')
+const { nlpManager } = require('../config/nlpManager')
+const { nerManager } = require('../config/nerManager')
 
-module.exports = function(controller, nlpManager) {
+module.exports = function(controller) {
   controller.middleware.receive.use(async function(bot, message, next) {
     const result = await nlpManager.process(message.text)
-    console.log('RESULT: ', result)
+    const entities = await nerManager.findEntities(message.text, 'en')
+
     message.intent = result.intent
-    message.entities = result.entities
+    message.entities = entities
 
     next()
   })

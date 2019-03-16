@@ -7,8 +7,8 @@ if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
 
 const Botkit = require('botkit')
 const debug = require('debug')('botkit:main')
-const manager = require('./config/nlpManager')
-const trainNlp = require('./nlu/trainNlp')
+const { nlpManager, trainNlp } = require('./config/nlpManager')
+const { addEntities } = require('./config/nerManager')
 
 var bot_options = {
   clientId: process.env.clientId,
@@ -47,11 +47,11 @@ webserver.get('/', function(req, res) {
     layout: 'layouts/default'
   })
 })
-
 ;(async function() {
-  await trainNlp(manager)
+  addEntities()
+  await trainNlp(nlpManager)
 
-  require(__dirname + '/middleware/receiveMiddleware')(controller, manager)
+  require(__dirname + '/middleware/receiveMiddleware')(controller, nlpManager)
   require(__dirname + '/components/user_registration.js')(controller)
   require(__dirname + '/components/onboarding.js')(controller)
 
@@ -59,7 +59,7 @@ webserver.get('/', function(req, res) {
   require('fs')
     .readdirSync(normalizedPath)
     .forEach(function(file) {
-      require('./skills/' + file)(controller, manager)
+      require('./skills/' + file)(controller, nlpManager)
     })
 })()
 
