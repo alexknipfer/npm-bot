@@ -15,18 +15,17 @@ module.exports = function(controller, nlpManager) {
   })
 
   controller.hears(
-    ['email'],
+    ['search.package'],
     'direct_message,direct_mention',
     nlpHearsMiddleware,
     function(bot, message) {
       bot.createConversation(message, async function(err, convo) {
         if (!err) {
-          console.log('MESSAGE: ', message)
+          // console.log('MESSAGE: ', message)
           // const result = await nlpManager.process()
           // convo.setVar("uptime", formatUptime(process.uptime()));
           // convo.setVar("convos", stats.convos);
           // convo.setVar("triggers", stats.triggers);
-
           // convo.say(
           //   "My main process has been online for {{vars.uptime}}. Since booting, I have heard {{vars.triggers}} triggers, and conducted {{vars.convos}} conversations."
           // );

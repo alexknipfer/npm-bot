@@ -12,7 +12,7 @@
     "en"
   ],
   "intentDomains": {
-    "email": "default"
+    "search.package": "default"
   },
   "nerManager": {
     "settings": {},
@@ -33,63 +33,115 @@
       "Hashtag",
       "URL"
     ],
-    "namedEntities": {}
+    "namedEntities": {
+      "packageName": {
+        "type": "trim",
+        "name": "packageName",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "en": {
+            "conditions": [
+              {
+                "type": "after",
+                "options": {},
+                "words": [
+                  "Search for "
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
   },
-  "slotManager": {},
+  "slotManager": {
+    "search.package": {
+      "packageName": {
+        "intent": "search.package",
+        "entity": "packageName",
+        "mandatory": false,
+        "locales": {}
+      }
+    }
+  },
   "classifiers": [
     {
       "language": "en",
       "docs": [
         {
-          "intent": "email",
+          "intent": "search.package",
           "utterance": [
-            "my",
-            "mail",
-            "is",
-            "email"
+            "search",
+            "for",
+            "a",
+            "packag",
+            "call",
+            "packagenam"
           ]
         },
         {
-          "intent": "email",
+          "intent": "search.package",
           "utterance": [
-            "my",
-            "email",
-            "is",
-            "email"
+            "search",
+            "for",
+            "packagenam"
+          ]
+        },
+        {
+          "intent": "search.package",
+          "utterance": [
+            "look",
+            "for",
+            "packagenam"
           ]
         }
       ],
       "features": {
-        "my": 2,
-        "mail": 1,
-        "is": 2,
-        "email": 3
+        "search": 2,
+        "for": 3,
+        "a": 1,
+        "packag": 1,
+        "call": 1,
+        "packagenam": 3,
+        "look": 1
       },
       "logistic": {
         "observations": {
-          "email": [
+          "search.package": [
             [
               1,
               2,
-              3
+              3,
+              4,
+              5
             ],
             [
-              2,
-              3
+              1,
+              5
+            ],
+            [
+              1,
+              5,
+              6
             ]
           ]
         },
         "labels": [
-          "email"
+          "search.package"
         ],
-        "observationCount": 2,
+        "observationCount": 3,
         "theta": [
           {
             "elements": [
-              1.5108055414767851,
-              0.75346764948306,
-              1.5108055414767851,
-              1.5108055414767851
+              1.0388274596591895,
+              1.5908030145067973,
+              0.5070448398350892,
+              0.5070448398350892,
+              0.5070448398350892,
+              1.5908030145067973,
+              0.5519755548476077
             ]
           }
         ]
@@ -107,26 +159,32 @@
           }
         },
         "classifierMap": {
-          "email": {
+          "search.package": {
             "sizes": [
-              4,
+              7,
               1
             ],
             "layers": [
               {
-                "my": {},
-                "mail": {},
-                "is": {},
-                "email": {}
+                "search": {},
+                "for": {},
+                "a": {},
+                "packag": {},
+                "call": {},
+                "packagenam": {},
+                "look": {}
               },
               {
                 "0": {
-                  "bias": 22.563825607299805,
+                  "bias": 25.974943161010742,
                   "weights": {
-                    "my": 25.15819549560547,
-                    "mail": 4.450896263122559,
-                    "is": 24.94268226623535,
-                    "email": 24.971633911132812
+                    "search": 14.208759307861328,
+                    "for": 28.79135513305664,
+                    "a": 1.6919047832489014,
+                    "packag": 1.5937896966934204,
+                    "call": 1.6227699518203735,
+                    "packagenam": 28.82600975036621,
+                    "look": 14.76571273803711
                   }
                 }
               }
@@ -154,9 +212,9 @@
   ],
   "responses": {
     "en": {
-      "email": [
+      "search.package": [
         {
-          "response": "Your email is {{email}}"
+          "response": "Your package name is {{packageName}}"
         }
       ]
     }
