@@ -1,0 +1,164 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "fullSearchWhenGuessed": false,
+    "useNlg": true,
+    "useNeural": true,
+    "useLRC": true
+  },
+  "languages": [
+    "en"
+  ],
+  "intentDomains": {
+    "email": "default"
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "classifiers": [
+    {
+      "language": "en",
+      "docs": [
+        {
+          "intent": "email",
+          "utterance": [
+            "my",
+            "mail",
+            "is",
+            "email"
+          ]
+        },
+        {
+          "intent": "email",
+          "utterance": [
+            "my",
+            "email",
+            "is",
+            "email"
+          ]
+        }
+      ],
+      "features": {
+        "my": 2,
+        "mail": 1,
+        "is": 2,
+        "email": 3
+      },
+      "logistic": {
+        "observations": {
+          "email": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        "labels": [
+          "email"
+        ],
+        "observationCount": 2,
+        "theta": [
+          {
+            "elements": [
+              1.5108055414767851,
+              0.75346764948306,
+              1.5108055414767851,
+              1.5108055414767851
+            ]
+          }
+        ]
+      },
+      "useLRC": true,
+      "useNeural": true,
+      "neuralClassifier": {
+        "settings": {
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "learningRate": 0.1,
+            "errorThresh": 0.0005,
+            "timeout": 120000
+          }
+        },
+        "classifierMap": {
+          "email": {
+            "sizes": [
+              4,
+              1
+            ],
+            "layers": [
+              {
+                "my": {},
+                "mail": {},
+                "is": {},
+                "email": {}
+              },
+              {
+                "0": {
+                  "bias": 22.563825607299805,
+                  "weights": {
+                    "my": 25.15819549560547,
+                    "mail": 4.450896263122559,
+                    "is": 24.94268226623535,
+                    "email": 24.971633911132812
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
+      }
+    }
+  ],
+  "responses": {
+    "en": {
+      "email": [
+        {
+          "response": "Your email is {{email}}"
+        }
+      ]
+    }
+  }
+}
