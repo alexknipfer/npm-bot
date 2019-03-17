@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{css,md,js,html}\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.15.2",
     "botkit": "^0.7.0",
     "botkit-storage-mongo": "^1.0.6",
@@ -18,8 +19,7 @@
     "express-hbs": "^1.0.4",
     "node-env-file": "^0.1.8",
     "node-nlp": "^2.5.1",
-    "querystring": "^0.2.0",
-    "request": "^2.79.0"
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
