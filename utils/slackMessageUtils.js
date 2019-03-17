@@ -2,7 +2,6 @@ function buildPackageText(packages) {
   let text = ''
 
   packages.forEach(({ package, score }) => {
-    console.log('PACKAGE: ', package)
     text += '---------------------------------------\n'
     text += `*Name:* ${package.name}\n*Version:* ${
       package.version
