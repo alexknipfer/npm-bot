@@ -1,7 +1,7 @@
 const npmService = require('../services/npmService')
 const nlpHearsMiddleware = require('../middleware/nlpHearsMiddleware')
 const { getEntityFromMessage } = require('../utils/entityUtils')
-const { buildPackageText } = require('../utils/slackBlockUtils')
+const { buildPackageText } = require('../utils/slackMessageUtils')
 
 module.exports = function(controller, nlpManager) {
   controller.hears(
