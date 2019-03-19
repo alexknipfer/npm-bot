@@ -1,17 +1,27 @@
 function buildPackageText(packages) {
   let text = ''
 
-  packages.forEach(({ package, score }) => {
+  packages.forEach(package => {
     text += '---------------------------------------\n'
     text += `*Name:* ${package.name}\n*Version:* ${
       package.version
     }\n*Description:* ${
       package.description
     }\n*Popularity:* ${getStarRatingFromPopularity(
-      score.detail.popularity
+      package.detail.popularity
     )}\n*NPM:* ${package.links.npm}\n*Repository:* ${
       package.links.repository
     }\n`
+
+    if (package.sizes) {
+      text += `*Bundle Size:* SIZE - ${convertFromByteToKilobyte(
+        package.sizes.size
+      )} kB | MINIFIED - ${convertFromByteToKilobyte(
+        package.sizes.minified
+      )} kB | GZIPPED - ${convertFromByteToKilobyte(
+        package.sizes.gzipped
+      )} kB\n`
+    }
   })
 
   return text
@@ -29,6 +39,10 @@ function getStarRatingFromPopularity(popularity) {
   } else {
     return `:star:`
   }
+}
+
+function convertFromByteToKilobyte(byteSize) {
+  return (parseFloat(byteSize) * 0.001).toFixed(1)
 }
 
 module.exports = {
