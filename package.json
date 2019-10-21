@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{css,md,js,html}\""
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.15.2",
     "botkit": "^0.7.0",
     "botkit-storage-mongo": "^1.0.6",
